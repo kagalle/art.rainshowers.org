@@ -3,8 +3,8 @@
     position: fixed;
     display: none;
     width: 100%;
-    height: 85%;
-    top: 60px;
+    height: 100%;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -36,7 +36,7 @@
     max-width: 100%;
   }
   #gallery_img_vertical{
-    max-height: 80vh;
+    max-width: 74%;
   }
 
 </style>
@@ -74,7 +74,7 @@
                     100vw"
         src="{{.Get "mediumImage"}} 774w,"
         alt="{{.Get "imageTitle"}}" />
-    <div><button class="btn bg-nav text-clr1" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>fullsize</button></div>
+    <div><button onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>fullsize</button></div>
 </div>
 
 <script>
