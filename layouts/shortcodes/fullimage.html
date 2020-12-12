@@ -1,0 +1,89 @@
+<style>
+  #fullimage_overlay_{{.Get "imageID"}} {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 85%;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 2;
+    cursor: pointer;
+  }
+  #fullimage_img{
+    position: absolute;
+    width: 95%;
+    height: 95%;
+  top: 50%;
+  left: 50%;
+  object-fit: contain;
+    transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  }
+  #gallery_overlay_horizontal{
+    margin:40px; 
+    max-width: 774px;
+    max-height: 522px;
+  }
+  #gallery_overlay_vertical{
+    margin:40px; 
+    max-height: 774px;
+    max-width: 522px;
+  }
+  #gallery_img_horizontal{
+    max-width: 100%;
+  }
+  #gallery_img_vertical{
+    max-height: 80vh;
+  }
+
+</style>
+<div id="fullimage_overlay_{{.Get "imageID"}}" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>
+    <img 
+        id="fullimage_img"
+        srcset="{{.Get "xlargeImage"}} 1024w,
+            {{.Get "largeImage"}} 908w,
+            {{.Get "mediumImage"}} 774w,
+            {{.Get "smallImage"}} 611w,
+            {{.Get "xsmallImage"}} 385w"
+            sizes="100vw"
+        src="{{.Get "mediumImage"}} 774w,"
+        alt="{{.Get "imageTitle"}}" />
+</div>
+
+<div 
+    {{ if eq (.Get "orientation") ("horizontal") }}
+        id="gallery_overlay_horizontal"
+    {{ else }}
+        id="gallery_overlay_vertical"
+    {{ end }}
+    >
+    <img 
+    {{ if eq (.Get "orientation") ("horizontal") }}
+        id="gallery_img_horizontal"
+    {{ else }}
+        id="gallery_img_vertical"
+    {{ end }}
+        srcset="{{.Get "mediumImage"}} 774w,
+            {{.Get "smallImage"}} 611w,
+            {{.Get "xsmallImage"}} 385w"
+            sizes="(min-width: 1075px) 774px,
+                    (min-width: 650px) 526px,
+                    100vw"
+        src="{{.Get "mediumImage"}} 774w,"
+        alt="{{.Get "imageTitle"}}" />
+    <div><button class="btn bg-nav text-clr1" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>fullsize</button></div>
+</div>
+
+<script>
+    function fullimage_on(element) {
+        document.getElementById(element).style.display = "block";
+    }
+
+    function fullimage_off(element) {
+        document.getElementById(element).style.display = "none";
+    }
+    off();
+</script>
