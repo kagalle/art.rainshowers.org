@@ -23,12 +23,12 @@
   -ms-transform: translate(-50%,-50%);
   }
   #gallery_overlay_horizontal{
-    margin:40px; 
+    margin:40px 10px 0 10px; 
     max-width: 774px;
     max-height: 522px;
   }
   #gallery_overlay_vertical{
-    margin:40px; 
+    margin:40px 10px 0 10px; 
     max-height: 774px;
     max-width: 522px;
   }
@@ -49,7 +49,7 @@
             {{.Get "smallImage"}} 611w,
             {{.Get "xsmallImage"}} 385w"
             sizes="100vw"
-        src="{{.Get "mediumImage"}} 774w,"
+        src="{{.Get "mediumImage"}}"
         alt="{{.Get "imageTitle"}}" />
 </div>
 
@@ -72,7 +72,7 @@
             sizes="(min-width: 1075px) 774px,
                     (min-width: 650px) 526px,
                     100vw"
-        src="{{.Get "mediumImage"}} 774w,"
+        src="{{.Get "mediumImage"}}"
         alt="{{.Get "imageTitle"}}" />
     <div><button onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>fullsize</button></div>
 </div>
