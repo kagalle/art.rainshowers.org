@@ -22,27 +22,56 @@
     transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   }
+  #fullimage_close{
+    position: absolute;
+    border: 1px solid grey;
+    /* background-color: transparent; */
+    background-color: grey; /* fallback */
+    background-color: rgba(255, 255, 255, 0.4);
+    color: grey;
+    top: 10px;
+    right: 10px;
+  }
   #gallery_overlay_horizontal{
     margin:40px 10px 0 10px; 
+    /* min-width: 774px; */
     max-width: 774px;
-    max-height: 522px;
+    /* max-height: 522px; */
+    position: relative;
   }
   #gallery_overlay_vertical{
     margin:40px 10px 0 10px; 
     max-height: 774px;
     max-width: 522px;
+    position: relative;
   }
   #gallery_img_horizontal{
-    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
   }
   #gallery_img_vertical{
-    max-width: 74%;
+    /* max-width: 74%; */
+    /* min-height: 100%; */
+    /* min-width: 74%; */
+    min-width: 100%;
+    max-height: 100%;
+  }
+  #gallery_expand{
+    position: absolute;;
+    border: 1px solid grey;
+    /* background-color:transparent; */
+    background-color: grey; /* fallback */
+    background-color: rgba(255, 255, 255, 0.4);
+    color: grey;
+    top: 10px;
+    right: 10px;
   }
 
 </style>
-<div id="fullimage_overlay_{{.Get "imageID"}}" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>
-    <img 
-        id="fullimage_img"
+<div id="fullimage_overlay_{{.Get "imageID"}}">
+    <div id="fullimage_img">
+      <button id = "fullimage_close" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Close&nbsp;</button>
+      <img 
         srcset="{{.Get "xlargeImage"}} 1024w,
             {{.Get "largeImage"}} 908w,
             {{.Get "mediumImage"}} 774w,
@@ -51,6 +80,7 @@
             sizes="100vw"
         src="{{.Get "mediumImage"}}"
         alt="{{.Get "imageTitle"}}" />
+    </div>
 </div>
 
 <div 
@@ -73,9 +103,10 @@
                     (min-width: 650px) 526px,
                     100vw"
         src="{{.Get "mediumImage"}}"
-        alt="{{.Get "imageTitle"}}" />
-    <div><button onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>fullsize</button></div>
-</div>
+        alt="{{.Get "imageTitle"}}">
+        <button id="gallery_expand" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Expand&nbsp;</button>
+      </img>
+  </div>
 
 <script>
     function fullimage_on(element) {
