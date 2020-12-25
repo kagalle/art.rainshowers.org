@@ -69,9 +69,9 @@
 
 </style>
 <div id="fullimage_overlay_{{.Get "imageID"}}">
-    <div id="fullimage_img">
+    <!-- <div > -->
       <button id = "fullimage_close" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Close&nbsp;</button>
-      <img 
+      <img id="fullimage_img"
         srcset="{{.Get "xlargeImage"}} 1024w,
             {{.Get "largeImage"}} 908w,
             {{.Get "mediumImage"}} 774w,
@@ -80,7 +80,7 @@
             sizes="100vw"
         src="{{.Get "mediumImage"}}"
         alt="{{.Get "imageTitle"}}" />
-    </div>
+    <!-- </div> -->
 </div>
 
 <div 
