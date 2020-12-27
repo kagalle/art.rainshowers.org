@@ -3,6 +3,7 @@
 
 baseURL = "https://art.rainshowers.org/"
 title = "Art at rainshowers.org"
+
 languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
@@ -98,7 +99,7 @@ uglyURLs = false
     # Email
     email = "ken@rainshowers.org"
     # Motto or introduction
-    motto = "my motto"
+    motto = "Art at rainshowers.org"
     # Avatar
     avatar = "/icons/apple-touch-icon.png"
     # Personal website, default: baseURL
@@ -198,7 +199,7 @@ uglyURLs = false
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
+        url = "/post/"
         name = "Posts"
         weight = 2
         pre = "internal"
@@ -338,7 +339,7 @@ uglyURLs = false
     siteLogo = "/icons/apple-touch-icon.png"
     # Note: used for JSON-LD, Open Graph
 
-    siteDescription = "MemE is a powerful and highly customizable GoHugo theme for personal blogs."
+    siteDescription = "Photography and art of Kenneth Galle"
     # Note: used for HTML head meta, JSON-LD,
     #       Open Graph, Atom, RSS
 
@@ -663,8 +664,8 @@ uglyURLs = false
     # Note: https://valine.js.org/
 
     ## Utterances
-    enableUtterances = false
-    utterancesRepo = ""
+    enableUtterances = true
+    utterancesRepo = "kagalle/art.rainshowers.org"
     utterancesIssueTerm = "pathname"
     utterancesTheme = "github-light"
     utterancesThemeDark = "photon-dark"
@@ -723,7 +724,7 @@ uglyURLs = false
     #            supported
 
     # The content width of the post
-    postWidth = 50
+    postWidth = 36
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -1118,14 +1119,14 @@ uglyURLs = false
 
     shareOnTwitter = true
     shareOnFacebook = true
-    shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
+    shareOnLinkedIn = false
+    shareOnTelegram = false
+    shareOnWeibo = false
+    shareOnDouban = false
+    shareOnQQ = false
+    shareOnQzone = false
 
-    shareViaQRCode = true
+    shareViaQRCode = false
 
 
     ######################################
@@ -1260,7 +1261,7 @@ uglyURLs = false
     ######################################
     # Code Blocks
 
-    enableHighlight = true
+    enableHighlight = false
 
     enableOverflowY = true
     maxHeight = 20
@@ -1319,7 +1320,7 @@ uglyURLs = false
     ######################################
     # Instant Page
 
-    enableInstantPage = true
+    enableInstantPage = false
     # Note: https://github.com/instantpage/instant.page
 
 
