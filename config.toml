@@ -633,7 +633,7 @@ uglyURLs = false
     # Note: render only in production
     #       environment
 
-    enableComments = false
+    enableComments = true
     # Note: *global settings*
     #       `comments` in post’s Front Matter
     #       has a higher priority than here
@@ -1115,18 +1115,18 @@ uglyURLs = false
     #       `share` in post’s Front Matter
     #       has a higher priority than here
 
-    displayShareOnText = false
+    displayShareOnText = true
 
     shareOnTwitter = true
     shareOnFacebook = true
     shareOnLinkedIn = false
-    shareOnTelegram = false
-    shareOnWeibo = false
-    shareOnDouban = false
-    shareOnQQ = false
-    shareOnQzone = false
+    shareOnTelegram = true
+    shareOnWeibo = true
+    shareOnDouban = true
+    shareOnQQ = true
+    shareOnQzone = true
 
-    shareViaQRCode = false
+    shareViaQRCode = true
 
 
     ######################################
