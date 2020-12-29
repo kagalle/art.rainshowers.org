@@ -1,0 +1,122 @@
+<style>
+  #fullimage_overlay_{{.Get "imageID"}} {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 2;
+    cursor: pointer;
+  }
+  #fullimage_img_{{.Get "imageID"}}{
+    position: absolute;
+    width: 95%;
+    height: 95%;
+  top: 50%;
+  left: 50%;
+  object-fit: contain;
+    transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  }
+  #fullimage_close_{{.Get "imageID"}}{
+    position: absolute;
+    border: 1px solid grey;
+    /* background-color: transparent; */
+    background-color: grey; /* fallback */
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    top: 10px;
+    right: 10px;
+    border-radius: 8px;
+  }
+  #gallery_overlay_horizontal_{{.Get "imageID"}}{
+    margin:40px 10px 0 10px; 
+    /* min-width: 774px; */
+    max-width: 774px;
+    /* max-height: 522px; */
+    position: relative;
+  }
+  #gallery_overlay_vertical_{{.Get "imageID"}}{
+    margin:40px 10px 0 10px; 
+    max-height: 774px;
+    max-width: 522px;
+    position: relative;
+  }
+  #gallery_img_horizontal_{{.Get "imageID"}}{
+    min-width: 100%;
+    max-height: 100%;
+  }
+  #gallery_img_vertical_{{.Get "imageID"}}{
+    /* max-width: 74%; */
+    /* min-height: 100%; */
+    /* min-width: 74%; */
+    min-width: 100%;
+    max-height: 100%;
+  }
+  #gallery_expand_{{.Get "imageID"}}{
+    position: absolute;;
+    border: 1px solid grey;
+    /* background-color:transparent; */
+    background-color: grey; /* fallback */
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    top: 10px;
+    right: 10px;
+    border-radius: 8px;
+  }
+
+</style>
+<div id="fullimage_overlay_{{.Get "imageID"}}">
+    <!-- <div > -->
+      <button id = "fullimage_close_{{.Get "imageID"}}" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Close&nbsp;</button>
+      <img id="fullimage_img_{{.Get "imageID"}}"
+        srcset="{{.Get "xlargeImage"}} 1024w,
+            {{.Get "largeImage"}} 908w,
+            {{.Get "mediumImage"}} 774w,
+            {{.Get "smallImage"}} 611w,
+            {{.Get "xsmallImage"}} 385w"
+            sizes="100vw"
+        src="{{.Get "mediumImage"}}"
+        alt="{{.Get "imageTitle"}}" />
+    <!-- </div> -->
+</div>
+
+<div 
+    {{ if eq (.Get "orientation") ("horizontal") }}
+        id="gallery_overlay_horizontal_{{.Get "imageID"}}"
+    {{ else }}
+        id="gallery_overlay_vertical_{{.Get "imageID"}}"
+    {{ end }}
+    >
+    <img 
+    {{ if eq (.Get "orientation") ("horizontal") }}
+        id="gallery_img_horizontal_{{.Get "imageID"}}"
+    {{ else }}
+        id="gallery_img_vertical_{{.Get "imageID"}}"
+    {{ end }}
+        srcset="{{.Get "mediumImage"}} 774w,
+            {{.Get "smallImage"}} 611w,
+            {{.Get "xsmallImage"}} 385w"
+            sizes="(min-width: 1075px) 774px,
+                    (min-width: 650px) 526px,
+                    100vw"
+        src="{{.Get "mediumImage"}}"
+        alt="{{.Get "imageTitle"}}">
+        <button id="gallery_expand_{{.Get "imageID"}}" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Expand&nbsp;</button>
+      </img>
+  </div>
+
+<script>
+    function fullimage_on(element) {
+        document.getElementById(element).style.display = "block";
+    }
+
+    function fullimage_off(element) {
+        document.getElementById(element).style.display = "none";
+    }
+    off();
+</script>
