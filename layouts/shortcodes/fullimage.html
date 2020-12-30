@@ -1,5 +1,5 @@
 <style>
-  #fullimage_overlay_{{.Get "imageID"}} {
+  .fullimage_overlay {
     position: fixed;
     display: none;
     width: 100%;
@@ -12,20 +12,19 @@
     z-index: 2;
     cursor: pointer;
   }
-  #fullimage_img_{{.Get "imageID"}}{
+  .fullimage_img{
     position: absolute;
     width: 95%;
     height: 95%;
-  top: 50%;
-  left: 50%;
-  object-fit: contain;
+    top: 50%;
+    left: 50%;
+    object-fit: contain;
     transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
   }
-  #fullimage_close_{{.Get "imageID"}}{
+  .fullimage_close{
     position: absolute;
     border: 1px solid grey;
-    /* background-color: transparent; */
     background-color: grey; /* fallback */
     background-color: rgba(255, 255, 255, 0.4);
     color: black;
@@ -33,34 +32,28 @@
     right: 10px;
     border-radius: 8px;
   }
-  #gallery_overlay_horizontal_{{.Get "imageID"}}{
+  .gallery_overlay_horizontal{
     margin:40px 10px 0 10px; 
-    /* min-width: 774px; */
     max-width: 774px;
-    /* max-height: 522px; */
     position: relative;
   }
-  #gallery_overlay_vertical_{{.Get "imageID"}}{
+  .gallery_overlay_vertical{
     margin:40px 10px 0 10px; 
     max-height: 774px;
     max-width: 522px;
     position: relative;
   }
-  #gallery_img_horizontal_{{.Get "imageID"}}{
+  .gallery_img_horizontal{
     min-width: 100%;
     max-height: 100%;
   }
-  #gallery_img_vertical_{{.Get "imageID"}}{
-    /* max-width: 74%; */
-    /* min-height: 100%; */
-    /* min-width: 74%; */
+  .gallery_img_vertical{
     min-width: 100%;
     max-height: 100%;
   }
-  #gallery_expand_{{.Get "imageID"}}{
+  .gallery_expand{
     position: absolute;;
     border: 1px solid grey;
-    /* background-color:transparent; */
     background-color: grey; /* fallback */
     background-color: rgba(255, 255, 255, 0.4);
     color: black;
@@ -70,10 +63,10 @@
   }
 
 </style>
-<div id="fullimage_overlay_{{.Get "imageID"}}">
+<div id="fullimage_overlay_{{.Get "imageID"}}" class="fullimage_overlay">  <!-- this is the only div ID I need to keep -->
     <!-- <div > -->
-      <button id = "fullimage_close_{{.Get "imageID"}}" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Close&nbsp;</button>
-      <img id="fullimage_img_{{.Get "imageID"}}"
+      <button class="fullimage_close" onclick='fullimage_off("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Close&nbsp;</button>
+      <img class="fullimage_img"
         srcset="{{.Get "xlargeImage"}} 1024w,
             {{.Get "largeImage"}} 908w,
             {{.Get "mediumImage"}} 774w,
@@ -87,16 +80,16 @@
 
 <div 
     {{ if eq (.Get "orientation") ("horizontal") }}
-        id="gallery_overlay_horizontal_{{.Get "imageID"}}"
+        class="gallery_overlay_horizontal"
     {{ else }}
-        id="gallery_overlay_vertical_{{.Get "imageID"}}"
+        class="gallery_overlay_vertical"
     {{ end }}
     >
     <img 
     {{ if eq (.Get "orientation") ("horizontal") }}
-        id="gallery_img_horizontal_{{.Get "imageID"}}"
+        class="gallery_img_horizontal"
     {{ else }}
-        id="gallery_img_vertical_{{.Get "imageID"}}"
+        class="gallery_img_vertical"
     {{ end }}
         srcset="{{.Get "mediumImage"}} 774w,
             {{.Get "smallImage"}} 611w,
@@ -106,17 +99,6 @@
                     100vw"
         src="{{.Get "mediumImage"}}"
         alt="{{.Get "imageTitle"}}">
-        <button id="gallery_expand_{{.Get "imageID"}}" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Expand&nbsp;</button>
+        <button class="gallery_expand" onclick='fullimage_on("fullimage_overlay_{{.Get "imageID"}}")'>&nbsp;Expand&nbsp;</button>
       </img>
   </div>
-
-<script>
-    function fullimage_on(element) {
-        document.getElementById(element).style.display = "block";
-    }
-
-    function fullimage_off(element) {
-        document.getElementById(element).style.display = "none";
-    }
-    off();
-</script>
